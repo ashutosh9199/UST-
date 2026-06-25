@@ -1,0 +1,143 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Azure Infrastructure Architecture" id="azure-arch-1">
+    <mxGraphModel dx="1800" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1150" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="github" value="GitHub Actions&#10;build / deploy / terraform-apply" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="280" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="oidcapp" value="Azure AD App: tra-github-oidc&#10;Federated credentials:&#10;main, pull_request,&#10;env:production, env:infrastructure" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="380" y="40" width="320" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="subscription" value="Azure Subscription" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;dashed=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="1600" height="900" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tfstaterg" value="Resource Group: tra-tfstate-rg" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;dashed=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="80" y="260" width="280" height="160" as="geometry" />
+        </mxCell>
+
+        <mxCell id="tfsa" value="Storage Account&#10;Terraform remote state&#10;(blob lease locking)" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;boundedLbl=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="320" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="aksrg" value="Resource Group: tra-aks-rg" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;dashed=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="420" y="260" width="1180" height="780" as="geometry" />
+        </mxCell>
+
+        <mxCell id="vnet" value="VNet (public + private subnets)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;dashed=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="460" y="340" width="1100" height="440" as="geometry" />
+        </mxCell>
+
+        <mxCell id="akscluster" value="AKS Cluster: tra-aks-aks (v1.34.8)&#10;OIDC issuer + Workload Identity enabled" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;dashed=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="500" y="380" width="1020" height="380" as="geometry" />
+        </mxCell>
+
+        <mxCell id="syspool" value="system node pool&#10;Standard_D2s_v7" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="540" y="405" width="220" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="userpool" value="user node pool&#10;Standard_D2s_v7, autoscaling" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="800" y="405" width="220" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="prodns" value="namespace: production" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;verticalAlign=top;align=left;spacingLeft=8;spacingTop=4;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="540" y="480" width="480" height="260" as="geometry" />
+        </mxCell>
+
+        <mxCell id="svc-gw" value="api-gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="550" y="515" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-fe" value="frontend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="660" y="515" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-up" value="upload-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="770" y="515" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-pa" value="parser-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="880" y="515" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-ru" value="rules-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="550" y="585" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-ai" value="ai-review-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="660" y="585" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-sc" value="scoring-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="770" y="585" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="svc-re" value="reporting-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="880" y="585" width="100" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="monns" value="namespace: monitoring" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;verticalAlign=top;align=left;spacingLeft=8;spacingTop=4;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1040" y="480" width="460" height="260" as="geometry" />
+        </mxCell>
+
+        <mxCell id="prom" value="Prometheus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="560" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="graf" value="Grafana" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="560" width="160" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="acr" value="Azure Container&#10;Registry" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;boundedLbl=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="820" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="appblob" value="Storage Account&#10;app Blob container" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;boundedLbl=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="820" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="kv" value="Key Vault" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;boundedLbl=1;" vertex="1" parent="1">
+          <mxGeometry x="840" y="820" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="law" value="Log Analytics&#10;Workspace" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;boundedLbl=1;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="820" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="appins" value="Application&#10;Insights" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="820" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="wi" value="Managed Identity: tra-aks-wi&#10;Federated credential →&#10;production:upload-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="800" width="160" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e1" value="OIDC, no client secret" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="github" target="oidcapp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="Contributor + User Access Admin (subscription)" style="edgeStyle=orthogonalEdgeStyle;html=1;dashed=1;" edge="1" parent="1" source="oidcapp" target="subscription">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="Storage Blob Data Contributor" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="oidcapp" target="tfsa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="kubectl apply" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="github" target="akscluster">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="docker push" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="github" target="acr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="AcrPull (kubelet identity)" style="edgeStyle=orthogonalEdgeStyle;html=1;dashed=1;" edge="1" parent="1" source="userpool" target="acr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="OIDC via AKS issuer, no static keys" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="svc-up" target="wi">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="Storage Blob Data Contributor" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="wi" target="appblob">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" value="scrape /metrics" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="prom" target="svc-gw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" value="oms_agent" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="akscluster" target="law">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="law" target="appins">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
